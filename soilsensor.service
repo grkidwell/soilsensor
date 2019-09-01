@@ -1,0 +1,16 @@
+[Unit]
+Description=Soil Sensor service
+Wants=network-online.target
+After=network-online.target 
+After=multi-user.target
+
+[Service]
+ExecStartPre=/bin/sleep 10
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/soilsensor/soil_oled.py #or soil_zeroseg.py
+
+WorkingDirectory=/home/pi/soilsensor
+User=pi
+ 
+[Install]
+WantedBy=multi-user.target
